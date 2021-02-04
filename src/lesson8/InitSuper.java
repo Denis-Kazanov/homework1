@@ -10,6 +10,7 @@ public class InitSuper {
         int rows = scanner.nextInt();
         System.out.println("ведите количество колонок в игре ");
         int cols = scanner.nextInt();
+        System.out.println("123");
         char [][] field = new char[rows][cols];
         return field;
     }
