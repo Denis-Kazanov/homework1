@@ -1,4 +1,4 @@
-package lesson16;
+package lessonLast;
 
 public class Dealer extends Player {
     @Override
