@@ -1,24 +1,30 @@
 package lesson13;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<String> texts = new ArrayList<>();
-        texts.add("qwerty");
-        texts.add(0, "hello");
-        texts.set(1, "world");
-        System.out.println(texts);
-        System.out.println(texts.contains("world"));
-        System.out.println(texts.get(0));
-        String test = texts.remove(1); // Возвращает и удаляет;
-        System.out.println(texts + " " + test);
-        texts.remove("hello"); // Удаляет по значению и ничего не возвращает
-        System.out.println(texts);
+        ArrayList<Integer> nums1 = new ArrayList<>();
+        nums1.add(1);
+        nums1.add(2);
+        nums1.add(3);
+        nums1.add(4);
 
+        HashSet<Integer> nums2 = new HashSet<>();
+        nums2.add(3);
 
+        nums2.add(4);
+        nums2.add(5);
+        nums2.add(6);
 
+        System.out.println(nums2);
 
+        CollectionUtilsImpl utils = new CollectionUtilsImpl();
+        utils.union(nums1,nums2);
+        Collection<Integer> res2= utils.difference(nums1,nums2);
+        System.out.println(res2);
 
     }
 }
