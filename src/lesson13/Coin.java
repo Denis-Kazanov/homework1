@@ -1,6 +1,6 @@
 package lesson13;
 
-public class Coin {
+public class Coin implements Comparable<Coin> {
     private int year;
     private int diametr;
     private int nominal;
@@ -57,5 +57,10 @@ public class Coin {
                 ", nominal=" + nominal +
                 ", metall='" + metall + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Coin o) { // Придумать сориторвку.
+        return this.getNominal() - o.getNominal();
     }
 }

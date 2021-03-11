@@ -1,7 +1,6 @@
 package lessonLast;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class BlackJackGame {
     private ArrayList<Player> players = new ArrayList<>();
@@ -32,4 +31,34 @@ public class BlackJackGame {
             this.addCardsIfNeed(player);
         }
     }
-}
+    public void printWinner(){
+        for (Player p  : players){
+            if(p.totalHandsValue() > 21){
+                p.setWinner(false);
+            }
+
+        }
+        int winnerValue = MaxHandsValue();
+        for (Player p: players){
+            if(p.totalHandsValue() == winnerValue){
+                System.out.println("Winner is " );
+                p.printHand();
+                System.out.println("---------------");
+            }else {
+                System.out.println("Losers is " );
+                p.printHand();
+                System.out.println("---------------");
+            }
+        }
+    }
+    private int MaxHandsValue(){
+        int maxHandValue = 0;
+        for (Player p : players){
+            if (p.totalHandsValue() > maxHandValue && p.GetisWinner())
+                maxHandValue = p.totalHandsValue();
+
+            }
+        return maxHandValue;
+        }
+    }
+

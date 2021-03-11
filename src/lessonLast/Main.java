@@ -21,6 +21,6 @@ public class Main {
 
         game.doSecondRound();
 
-        System.out.println("sdsdsdsd");
+        game.printWinner();
     }
 }
