@@ -1,5 +1,7 @@
 package lesson13;
 
+import java.util.Objects;
+
 public class Coin implements Comparable<Coin> {
     private int year;
     private int diametr;
@@ -60,7 +62,18 @@ public class Coin implements Comparable<Coin> {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Coin)) return false;
+        Coin coin = (Coin) o;
+        return getYear() == coin.getYear() && getDiametr() == coin.getDiametr() && getNominal() == coin.getNominal() && Objects.equals(getMetall(), coin.getMetall());
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getYear(), getDiametr(), getNominal(), getMetall());
+    }
 
     @Override
     public int compareTo(Coin o) { // Придумать сориторвку.
