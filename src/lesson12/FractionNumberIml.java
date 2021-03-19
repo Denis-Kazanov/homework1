@@ -1,5 +1,7 @@
 package lesson12;
 
+import java.util.Objects;
+
 public class FractionNumberIml implements FractionNumber{
     private int divided;
     private int divisor;
@@ -37,7 +39,22 @@ public class FractionNumberIml implements FractionNumber{
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FractionNumberIml that = (FractionNumberIml) o;
+        return divided == that.divided && divisor == that.divisor;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(divided, divisor);
+    }
+
+    @Override
     public String toString() {
         return divided + "/" + divisor;
     }
 }
+
+
