@@ -28,18 +28,18 @@ public class MultiMapImpl<K,V> implements MultiMap<K,V>{
     }
 
     @Override
-    public V remove(Object key) {
-        return null;
+    public V remove(Object key)  { multiMap.remove(key);
+         return null;
     }
 
     @Override
     public int size() {
-        return 0;
+        return multiMap.size();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return multiMap.isEmpty();
     }
 
     @Override
@@ -81,7 +81,9 @@ public class MultiMapImpl<K,V> implements MultiMap<K,V>{
     }
 
     @Override
-    public void putAll(Map<? extends K, ? extends V> m) {
+    public void putAll(Map<? extends K, ? extends V> m)  // добавляет одну мультимапу в другую.
+    {
+
 
     }
 
