@@ -1,8 +1,9 @@
 package lesson18;
 
 import java.util.*;
+import java.util.Iterator;
 
-public class MultiMapImpl<K,V> implements MultiMap<K,V>{
+public class MultiMapImpl<K, V> implements MultiMap<K, V> {
     private HashMap<K, ArrayList<V>> multiMap = new HashMap<>();
 
 
@@ -13,10 +14,10 @@ public class MultiMapImpl<K,V> implements MultiMap<K,V>{
 
     @Override
     public V get(Object key) {
-         if(multiMap.containsKey(key)){
-             ArrayList<V> values = multiMap.get(key);
-             return values.get(values.size()-1);
-         }
+        if (multiMap.containsKey(key)) {
+            ArrayList<V> values = multiMap.get(key);
+            return values.get(values.size() - 1);
+        }
 
 
         return null;
@@ -24,12 +25,27 @@ public class MultiMapImpl<K,V> implements MultiMap<K,V>{
 
     @Override
     public Iterator<V> valuesIterator(K key) {
-        return null;
+        if (multiMap.containsKey(key)){
+        return multiMap.get(key).iterator();}
+        return new Iterator<V>() {
+            @Override
+            public boolean hasNext() {
+                return false;
+            }
+
+            @Override
+            public V next() {
+                return null;
+            }
+        };
     }
 
     @Override
-    public V remove(Object key)  { multiMap.remove(key);
-         return null;
+    public V remove(Object key) {
+        if (multiMap.containsKey(key)) {
+            multiMap.remove(key);
+        }
+        return null;
     }
 
     @Override
@@ -46,15 +62,14 @@ public class MultiMapImpl<K,V> implements MultiMap<K,V>{
     public boolean containsKey(Object key) {
 
 
-
         return multiMap.containsKey(key);
     }
 
     @Override
     public boolean containsValue(Object value) {
-        for (K key:multiMap.keySet()){
+        for (K key : multiMap.keySet()) {
             ArrayList<V> values = multiMap.get(key);
-            if (values.contains(value)){
+            if (values.contains(value)) {
                 return true;
 
             }
@@ -66,12 +81,11 @@ public class MultiMapImpl<K,V> implements MultiMap<K,V>{
 
     @Override
     public V put(K key, V value) {
-        if (multiMap.containsKey(key)){
+        if (multiMap.containsKey(key)) {
             ArrayList<V> values = multiMap.get(key);
             values.add(value);
             multiMap.put(key, values);
-        }
-        else {
+        } else {
             ArrayList<V> values = new ArrayList<>();
             values.add(value);
             multiMap.put(key, values);
@@ -85,25 +99,30 @@ public class MultiMapImpl<K,V> implements MultiMap<K,V>{
     {
 
 
+
+
     }
 
     @Override
     public void clear() {
-
+            multiMap.clear();
     }
 
     @Override
     public Set<K> keySet() {
-        return null;
+        return multiMap.keySet();
+
     }
 
     @Override
     public Collection<V> values() {
-        return null;
+        return (Collection<V>) multiMap.values();
+
     }
 
     @Override
     public Set<Entry<K, V>> entrySet() {
+
         return null;
     }
 }
