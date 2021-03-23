@@ -3,13 +3,19 @@ package lesson18;
 import java.util.*;
 import java.util.Iterator;
 
-public class MultiMapImpl<K, V> implements MultiMap<K, V> {
+public  class MultiMapImpl<K, V> implements MultiMap<K, V> {
     private HashMap<K, ArrayList<V>> multiMap = new HashMap<>();
 
+    @Override
+    public String toString() {
+        return "MultiMapImpl{" +
+                "multiMap=" + multiMap +
+                '}';
+    }
 
     @Override
     public int countValues(K key) {
-        return 0;
+       return 0;
     }
 
     @Override
@@ -22,23 +28,13 @@ public class MultiMapImpl<K, V> implements MultiMap<K, V> {
 
         return null;
     }
-
+    
     @Override
     public Iterator<V> valuesIterator(K key) {
         if (multiMap.containsKey(key)){
         return multiMap.get(key).iterator();}
-        return new Iterator<V>() {
-            @Override
-            public boolean hasNext() {
-                return false;
-            }
-
-            @Override
-            public V next() {
-                return null;
-            }
-        };
-    }
+        ArrayList<V> values = new ArrayList<>();
+        return values.iterator();}
 
     @Override
     public V remove(Object key) {
@@ -95,9 +91,14 @@ public class MultiMapImpl<K, V> implements MultiMap<K, V> {
     }
 
     @Override
-    public void putAll(Map<? extends K, ? extends V> m)  // добавляет одну мультимапу в другую.
+    public void putAll(Map<? extends K, ? extends V> m)
     {
+           for(Entry<?extends K, ? extends V> e : m.entrySet()){
+               K key = e.getKey();
+               V value = e.getValue();
+               this.put(key, value);
 
+           }
 
 
 
@@ -122,7 +123,9 @@ public class MultiMapImpl<K, V> implements MultiMap<K, V> {
 
     @Override
     public Set<Entry<K, V>> entrySet() {
+            Set set = multiMap.entrySet();
+            return set;
 
-        return null;
+
     }
 }

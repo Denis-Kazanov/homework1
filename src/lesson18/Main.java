@@ -1,9 +1,6 @@
 package lesson18;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -35,8 +32,16 @@ public class Main {
             telephonBook2.put("Денис", "+79067146161");
             telephonBook2.put("Денис", "+79067146162");
             telephonBook2.put("Tujh", "+79067146162");
-            telephonBook.putAll(telephonBook2);
-            System.out.println(telephonBook.get("Денис"));
+            HashMap<String,String> test = new HashMap<>();
+            Set<Map.Entry<String,String>> bl = test.entrySet();
+            test.put("1", "1");
+            test.put("2", "2");
+            for(Iterator<String> iter = telephonBook.valuesIterator("Денис"); iter.hasNext();){
+                    System.out.println(iter.next());
+            }
+            System.out.println(telephonBook.valuesIterator("Денис"));
+
+
 
     }
 }

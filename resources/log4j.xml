@@ -22,7 +22,7 @@
     </appender>
 
     <root>
-        <level value="DEBUG" />   ///уровень при которм записывать
+        <level value="INFO" />   ///уровень при которм записывать
         <appender-ref ref="console" />
         <appender-ref ref="file" />
     </root>

@@ -7,6 +7,7 @@ public class Main {
     private static final Logger LOGGER =  Logger.getLogger(Main.class); // ПЕРВЫЙ ПАРАМЕТР ЭТО НАЗВАНИЕ КЛАССА В КОТОРОМ ЛОГЕР
 
     public static void main(String[] args) {
+        LOGGER.info("тест");
         LOGGER.fatal("Hello");
 
 
